@@ -2,7 +2,7 @@
 
 The suggested name was `urban-eureka`
 
-Project assists in creating local installation of Interlok with optional dependencies. This branch is monitored by [dependabot](https://dependabot.com); and is the preferred way for you to build your installation which is why it's the default branch...
+Project assists in creating local installation of Interlok with optional dependencies.
 
 ## Usage
 

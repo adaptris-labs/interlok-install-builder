@@ -1,6 +1,6 @@
 ext {
   interlokParentGradle = project.findProperty('interlokParentGradle') ?: 'https://raw.githubusercontent.com/adaptris/interlok-build-parent/main/v4/build.gradle'
-  interlokVersion = project.findProperty('interlokVersion') ?: '4.0.0-RELEASE'
+  interlokVersion = '4.0.0-RELEASE'
   interlokMavenLocal = project.findProperty('interlokMavenLocal') ?: false
   interlokInstallDirectory = project.findProperty('interlokInstallDirectory') ?: "${buildDir}/distribution"
   buildEnv = project.findProperty('buildEnv') ?: "dev"
@@ -17,12 +17,11 @@ allprojects {
 }
 
 dependencies {
-  interlokRuntime  group: "com.adaptris", name: "interlok-json",           version: interlokVersion, changing: true
-  interlokJavadocs group: "com.adaptris", name: "interlok-json",           version: interlokVersion, changing: true, classifier: "javadoc", transitive: false
-  interlokRuntime  group: "com.adaptris", name: "interlok-apache-http",    version: interlokVersion, changing: true
-  interlokJavadocs group: "com.adaptris", name: "interlok-apache-http",    version: interlokVersion, changing: true, classifier: "javadoc", transitive: false
-  interlokRuntime  group: "com.adaptris", name: "interlok-service-tester", version: interlokVersion, changing: true
-  interlokJavadocs group: "com.adaptris", name: "interlok-service-tester", version: interlokVersion, changing: true, classifier: "javadoc", transitive: false
+  interlokRuntime  ("com.adaptris:interlok-json:$interlokVersion") { changing= true  }
+  interlokRuntime  ("com.adaptris:interlok-apache-http:$interlokVersion") { changing= true  }
+
+  interlokJavadocs group: "com.adaptris", name: "interlok-apache-http",    version: "$interlokVersion", changing: true, classifier: "javadoc", transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-json",           version: "$interlokVersion", changing: true, classifier: "javadoc", transitive: false
 }
 
 installDist {
